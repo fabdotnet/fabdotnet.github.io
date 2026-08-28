@@ -11,7 +11,6 @@ summary = "About Fabien MAISONNETTE — security researcher, pentester, and the 
 <div style="display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1rem;">
   <img src="/img/grey-hat-halo-meme-transparent.svg" alt="Grey hat — basically just a black hat who uses cheap laundry detergent" width="210" style="flex:0 0 auto;border-radius:8px;">
   <div style="flex:1 1 320px;min-width:280px;">
-    <h2 id="whoami" style="margin-top:0;">whoami</h2>
     <p>I'm <strong>Fabien MAISONNETTE</strong> (<code>FabDotNET</code>), a cybersecurity engineer and penetration tester with 10+ years in offensive security. I've been passionate about computers since my preteen years, with a particular love for cybersecurity. This site collects my coordinated vulnerability disclosures, with root-cause analysis and proof of concept for each finding.</p>
   </div>
 </div>
