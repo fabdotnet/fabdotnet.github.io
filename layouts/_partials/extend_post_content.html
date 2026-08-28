@@ -1,0 +1,28 @@
+{{- /* Per-page view counter via GoatCounter JSON API.
+       Shows only on real articles (posts / tools / research) and only when params.goatcounter is set. */ -}}
+{{- if and .Site.Params.goatcounter (in (slice "posts" "tools") .Section) -}}
+<div class="page-views" style="margin-top:1.5rem;font-size:0.85rem;color:var(--secondary);">
+  <span aria-hidden="true">&#128065;</span>
+  <span id="gc-views">…</span> views
+</div>
+<script>
+(function () {
+  var code = {{ .Site.Params.goatcounter | jsonify }};
+  var el = document.getElementById("gc-views");
+  if (!el) return;
+  var box = el.parentNode;
+  var r = new XMLHttpRequest();
+  r.addEventListener("load", function () {
+    try {
+      var n = JSON.parse(this.responseText).count;
+      if (n == null) { box.style.display = "none"; return; }
+      el.innerText = n;
+    } catch (e) { box.style.display = "none"; }
+  });
+  r.addEventListener("error", function () { box.style.display = "none"; });
+  r.open("GET", "https://" + code + ".goatcounter.com/counter/" +
+    encodeURIComponent(location.pathname) + ".json");
+  r.send();
+})();
+</script>
+{{- end -}}

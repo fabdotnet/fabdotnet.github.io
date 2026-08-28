@@ -1,0 +1,31 @@
+/* Comparison-table status icons (green check / red cross).
+   Colors chosen to stay legible on both dark (default) and light themes. */
+.tick,
+.cross {
+    font-weight: 700;
+    font-size: 1.05em;
+    line-height: 1;
+}
+
+.tick {
+    color: #2ea043;
+}
+
+.cross {
+    color: #e5534b;
+}
+
+/* Home hero spacing: PaperMod centers the home-info block inside a 320px
+   min-height with justify-content:center, which leaves large vertical gaps
+   under the menu and under the social icons. Scope this to .home-info only so
+   the "hero" first card on list/tag pages keeps its intended styling. */
+.first-entry.home-info {
+    min-height: auto;
+    justify-content: flex-start;
+    margin: var(--gap) 0;
+}
+
+/* Tighten the gap between the description and the social icons. */
+.home-info .social-icons {
+    margin-top: 0.5rem;
+}

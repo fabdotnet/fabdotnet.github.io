@@ -1,0 +1,5 @@
+{{- /* GoatCounter analytics — loads only in production and only when params.goatcounter is set. */ -}}
+{{- if and hugo.IsProduction .Site.Params.goatcounter -}}
+<script data-goatcounter="https://{{ .Site.Params.goatcounter }}.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+{{- end -}}

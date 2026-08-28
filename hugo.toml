@@ -1,0 +1,80 @@
+baseURL = "https://fabdotnet.github.io/"
+languageCode = "en-us"
+title = "FabDotNET — Security Research — Advisories & Tools"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+pygmentsUseClasses = true
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[params]
+  env = "production"
+  description = "Vulnerability research, CVE writeups and security advisories."
+  author = "Fabien MAISONNETTE"
+  # GoatCounter analytics: set to your GoatCounter code (the subdomain part of
+  # https://<CODE>.goatcounter.com). Leave empty to disable analytics + counter.
+  goatcounter = "fabdotnet"
+  defaultTheme = "dark"
+  ShowReadingTime = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowToc = true
+  TocOpen = false
+
+  [params.homeInfoParams]
+    Title = "Security Research"
+    Content = "CVE writeups, root-cause analysis, coordinated disclosures, and open security tooling."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/fabdotnet"
+  [[params.socialIcons]]
+    name = "rss"
+    url = "index.xml"
+
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[[menu.main]]
+  identifier = "advisories"
+  name = "Advisories"
+  url = "/posts/"
+  weight = 10
+# Tooling section hidden until ready.
+# [[menu.main]]
+#   identifier = "tools"
+#   name = "Research & Tools"
+#   url = "/tools/"
+#   weight = 15
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 20
+[[menu.main]]
+  identifier = "bio"
+  name = "Bio"
+  url = "/bio/"
+  weight = 35
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 40
+
+[markup.highlight]
+  noClasses = false
+  lineNos = true
+  codeFences = true
+  guessSyntax = true
+
+[markup.goldmark.renderer]
+  unsafe = true

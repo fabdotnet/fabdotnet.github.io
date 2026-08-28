@@ -1,0 +1,8 @@
+# security.txt — RFC 9116
+# https://fabdotnet.github.io/.well-known/security.txt
+
+Contact: https://hackerone.com/fabdotnet
+Contact: https://fr.linkedin.com/in/fabdotnet
+Preferred-Languages: en, fr
+Canonical: https://fabdotnet.github.io/.well-known/security.txt
+Expires: 2027-08-08T00:00:00.000Z
