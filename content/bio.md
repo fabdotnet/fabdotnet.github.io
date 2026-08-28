@@ -8,10 +8,9 @@ summary = "Overview of Fabien MAISONNETTE — Pentest & Cybersecurity Manager. O
 <a href="https://fr.linkedin.com/in/fabdotnet" style="display:inline-block;padding:8px 16px;border:1px solid currentColor;border-radius:6px;text-decoration:none;font-weight:600;">Full profile / CV on LinkedIn →</a>
 
 **Alstom WCE Senior Expert.**
-Versatile engineer with 10+ years in cybersecurity (15+ in IT), Versatile 
-engineer with 10+ years in cybersecurity (15+ in IT), with hands-on 
-experience across software development, networking, architecture, 
-penetration testing and reverse engineering.
+Versatile engineer with 10+ years in cybersecurity (15+ in IT), 
+with hands-on experience across software development, networking, 
+architecture, penetration testing and reverse engineering.
 Vulnerability researcher and author of several [CVEs](/posts/).
 
 ## Areas of expertise
