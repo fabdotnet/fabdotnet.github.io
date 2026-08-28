@@ -1,0 +1,57 @@
+<svg viewBox="0 0 600 740" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="crown2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9aa0a8"/>
+      <stop offset="1" stop-color="#7c828b"/>
+    </linearGradient>
+    <linearGradient id="brimTop2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8b9199"/>
+      <stop offset="1" stop-color="#6d737c"/>
+    </linearGradient>
+    <linearGradient id="halo2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffe89a"/>
+      <stop offset="0.5" stop-color="#ffd24d"/>
+      <stop offset="1" stop-color="#e0a92e"/>
+    </linearGradient>
+    <filter id="glow2" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- poster background -->
+  
+
+  <!-- framed image area (demotivational style) -->
+  <rect x="70" y="55" width="460" height="420" fill="none" stroke="#8a8f98" stroke-width="2"/>
+
+  <!-- hat, scaled into the frame -->
+  <g transform="translate(83,45) scale(0.85)">
+    <ellipse cx="256" cy="120" rx="74" ry="21" fill="none"
+             stroke="url(#halo2)" stroke-width="12" filter="url(#glow2)"/>
+    <ellipse cx="256" cy="352" rx="196" ry="52" fill="#565b63"/>
+    <ellipse cx="256" cy="342" rx="196" ry="50" fill="url(#brimTop2)"/>
+    <path d="M170 348 C168 300 168 232 190 190 C200 170 214 178 230 188
+             C240 194 240 176 256 168 C272 176 272 194 282 188
+             C298 178 312 170 322 190 C344 232 344 300 342 348 Z"
+          fill="url(#crown2)"/>
+    <path d="M172 336 C210 356 302 356 340 336 L340 306 C302 326 210 326 172 306 Z"
+          fill="#33363c"/>
+    <rect x="300" y="312" width="20" height="18" rx="3" fill="#22242a"/>
+    <path d="M206 320 C202 268 206 216 222 196"
+          stroke="#b0b5bc" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- title -->
+  <text x="300" y="580" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="72"
+        letter-spacing="8" fill="#8a8f98">GREY HAT</text>
+
+  <!-- punchline -->
+  <text x="300" y="632" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="24"
+        fill="#9aa0a8">Basically just a black hat who uses</text>
+  <text x="300" y="666" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="24"
+        fill="#9aa0a8">cheap laundry detergent.</text>
+</svg>
