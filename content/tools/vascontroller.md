@@ -1,11 +1,9 @@
 +++
 title = "VASController — Lifecycle Manager for Greenbone Community Edition"
-description = "Bash tool to install, run and archive Greenbone Community Edition (OpenVAS) in Docker: feed import monitoring, version locking, mission backups, offline bundles."
-date = 2026-10-18T00:00:00+02:00
-author = "FabDotNET"
-tags = ["openvas", "greenbone", "docker", "pentest", "tooling"]
-draft = true
-ShowToc = true
+date = 2026-10-18T00:00:00Z
+draft = false
+tags = ["tool", "openvas", "greenbone", "docker", "pentest"]
+summary = "Bash tool to install, run and archive Greenbone Community Edition (OpenVAS) in Docker: feed import monitoring, version locking, mission backups, offline bundles."
 +++
 
 ## Summary
@@ -67,8 +65,6 @@ Changing values are highlighted with their delta. A counter frozen for 10 minute
 sudo vasctl feed-status --watch               # live dashboard
 sudo vasctl feed-status --watch --timeout 90  # gives up after 90 min (exit code 1)
 ```
-
-**[SCREENSHOT: `sudo vasctl feed-status --watch` during the first import]**
 
 ## Mission Backups
 
