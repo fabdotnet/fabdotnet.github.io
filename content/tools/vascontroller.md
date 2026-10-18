@@ -1,6 +1,7 @@
 +++
 title = "VASController — Lifecycle Manager for Greenbone Community Edition"
 date = 2026-10-18T00:00:00Z
+wip = true  # shows a red DRAFT badge next to the title (see extend_head.html)
 draft = false
 tags = ["tool", "openvas", "greenbone", "docker", "pentest"]
 summary = "Bash tool to install, run and archive Greenbone Community Edition (OpenVAS) in Docker: feed import monitoring, version locking, mission backups, offline bundles."
