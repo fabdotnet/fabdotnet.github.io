@@ -3,3 +3,35 @@
 <script data-goatcounter="https://{{ .Site.Params.goatcounter }}.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 {{- end -}}
+
+{{- /* Red "DRAFT" badge for published-but-evolving pages: set `wip = true` in the
+       page front matter. Shown next to the article title and on its card in list
+       pages (home, sections, tags). */ -}}
+{{- $wip := where site.RegularPages "Params.wip" true -}}
+{{- if $wip }}
+<style>
+{{- range $wip }}
+.post-entry:has(a.entry-link[href="{{ .Permalink }}"]) .entry-header h2::after,
+{{- end }}
+{{- if .Params.wip }}
+.post-header .post-title::after,
+{{- end }}
+.wip-badge {
+  content: "DRAFT";
+  /* titles are flex containers in PaperMod: keep the badge compact, top-aligned */
+  flex: 0 0 auto;
+  align-self: flex-start;
+  height: auto;
+  line-height: 1.4;
+  margin: .35em 0 0 .75em;
+  padding: .1em .45em;
+  border: 2px solid #e5534b;
+  border-radius: 4px;
+  color: #e5534b;
+  font-size: .55em;
+  font-weight: 700;
+  letter-spacing: .05em;
+  white-space: nowrap;
+}
+</style>
+{{- end }}
