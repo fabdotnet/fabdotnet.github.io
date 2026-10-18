@@ -7,8 +7,13 @@ ShowToc = false
 hideMeta = true
 +++
 
-Security research and coordinated vulnerability disclosures, most recent first.
-Each entry links to a full writeup with root-cause analysis and proof of concept.
+<div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem;">
+  <div style="flex:1 1 320px;min-width:280px;">
+    <p>Security research and coordinated vulnerability disclosures, most recent first.
+    Each entry links to a full writeup with root-cause analysis and proof of concept.</p>
+  </div>
+  <img src="/img/vulnerabilities-everywhere.jpg" alt="Toy Story meme: Vulnerabilities, vulnerabilities everywhere" width="300" loading="lazy" style="flex:0 0 auto;max-width:100%;height:auto;border-radius:8px;">
+</div>
 
 ## IBM
 
