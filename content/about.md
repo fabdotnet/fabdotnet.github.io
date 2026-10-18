@@ -45,3 +45,8 @@ can be verified out-of-band against this fingerprint:
 
 - **Fingerprint:** `080B 0DC4 BC68 E1D7 BB51 262A FE39 B267 0C33 5E62`
 - **Key type:** RSA 4096, created 2021-07-19
+
+## How This Blog Is Made
+
+Most of the tools and articles on this blog are written with the help of AI.
+The reasons are explained in [Why I Use AI to Build My Tools](/posts/why-i-use-ai/).
