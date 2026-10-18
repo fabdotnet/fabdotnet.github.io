@@ -27,6 +27,8 @@ pygmentsUseClasses = true
   ShowBreadCrumbs = true
   ShowToc = true
   TocOpen = false
+  # Sections listed on the home page (default would be "posts" only).
+  mainSections = ["posts", "tools"]
 
   [params.homeInfoParams]
     Title = "Security Research"
@@ -48,12 +50,11 @@ pygmentsUseClasses = true
   name = "Advisories"
   url = "/posts/"
   weight = 10
-# Tooling section hidden until ready.
-# [[menu.main]]
-#   identifier = "tools"
-#   name = "Research & Tools"
-#   url = "/tools/"
-#   weight = 15
+[[menu.main]]
+  identifier = "tools"
+  name = "Research & Tools"
+  url = "/tools/"
+  weight = 15
 [[menu.main]]
   identifier = "tags"
   name = "Tags"
