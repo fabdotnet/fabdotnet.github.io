@@ -1,5 +1,5 @@
 +++
-title = "USBench — USB Hardening Audit Bench (PROBE / TARGET)"
+title = "USBench — USB Hardening Audit Bench (PROBE / TARGET) - DRAFT"
 date = 2026-10-18T00:00:00Z
 draft = false
 tags = ["tool", "usb", "hardening", "badusb", "pentest", "freebsd", "windows"]
