@@ -19,8 +19,13 @@ takes real development time, and even more testing time. Between work and
 everything else, most of my ideas stayed ideas, or ended up as a half-finished
 script on a disk somewhere.
 
-AI changed that. Development time has dropped so much that some days I wonder
-whether finding the right idea now takes longer than building it. ^^
+<div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem;">
+  <div style="flex:1 1 320px;min-width:280px;">
+    <p>AI changed that. Development time has dropped so much that some days I wonder
+    whether finding the right idea now takes longer than building it. ^^</p>
+  </div>
+  <img src="/img/ai-mind-blown.jpg" alt="Mind-blown meme captioned 'AI'" width="280" loading="lazy" style="flex:0 0 auto;max-width:100%;height:auto;border-radius:8px;">
+</div>
 
 ## What I Do vs. What AI Does
 
