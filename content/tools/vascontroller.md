@@ -117,6 +117,67 @@ Mission archives contain credentials and their decryption key: they should be st
 ```bash
 ssh -L 8443:127.0.0.1:443 <user>@<scanner-vm>   # then https://127.0.0.1:8443
 ```
+## Running in a VM: Performance and Tuning
+
+Most scanners end up in a VM, and that is where Greenbone is the most demanding. The stack was benchmarked in VirtualBox 7.2 with Debian 12, Debian 13 and Ubuntu 26.04 guests. Disk size, RAM and disk speed decide whether a feed update takes 40 minutes or never finishes. CPU and network matter much less.
+
+**What the measurements show**
+
+- **Disk size.** A loaded stack uses about 55 GB. A SCAP update rebuilds about 25 GB of PostgreSQL data next to the live copy before swapping them, and pulls about 7.5 GB of new images. The peak is close to 86 GB, so an 80 GB disk fills up in the middle of the update. Plan for **120 GB**.
+- **RAM.** The NVT import of `gvmd` alone needs about 2.5 GB. With 4 GB of RAM and no swap, the kernel kills it every two minutes and `gvmd` restarts the import forever, with nothing in its logs. **8 GB of RAM plus 4 GB of swap** is the safe baseline.
+- **Disk speed.** The SCAP import is I/O bound. A full import takes about 40 minutes on an NVMe-backed VM, but more than 10 hours on a 30 MB/s virtual disk with 4 GB of RAM, where a single SQL statement ran for 2 hours. Put the VM on **SSD**.
+- **Network.** NAT is fine for updates: an image pull survived a 6-minute link cut. Scans need **bridged** networking, otherwise ARP/ICMP host discovery is degraded.
+
+**Recommended VirtualBox settings**
+
+| Setting | Value |
+|---|---|
+| vCPU / RAM | 4 / 8 GB, plus 4 GB of swap in the guest |
+| Disk | 120 GB **fixed-size** VDI on SSD, SATA AHCI controller, *Solid-state Drive* and *Discard* enabled |
+| Host I/O cache | Off on an SSD host |
+| Acceleration | KVM paravirtualization, nested paging enabled |
+| Network | Bridged adapter, virtio-net |
+| Display | VMSVGA, 16 MB video memory, no audio |
+
+```bash
+VM=scanner
+VBoxManage modifyvm $VM --cpus 4 --memory 8192 --paravirtprovider kvm --nested-paging on \
+  --graphicscontroller vmsvga --vram 16 --audio-driver none \
+  --nic1 bridged --bridgeadapter1 <host_interface> --nictype1 virtio
+VBoxManage createmedium disk --filename $VM.vdi --size 122880 --variant Fixed
+VBoxManage storagectl $VM --name SATA --add sata --controller IntelAhci --hostiocache off
+VBoxManage storageattach $VM --storagectl SATA --port 0 --type hdd --medium $VM.vdi \
+  --nonrotational on --discard on
+```
+
+Inside the guest, add swap and enable periodic TRIM:
+
+```bash
+sudo fallocate -l 4G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+sudo systemctl enable --now fstrim.timer
+```
+
+An existing disk can be grown while the VM is powered off, then extended from the guest:
+
+```bash
+VBoxManage modifymedium disk scanner.vdi --resize 122880        # on the host, size in MB
+sudo growpart /dev/sda 1 && sudo resize2fs /dev/sda1             # in the guest (cloud-guest-utils)
+```
+
+**Pitfalls**
+
+- On a Linux host, VirtualBox does not start while the KVM modules hold VT-x (`VERR_VMX_IN_VMX_ROOT_MODE`). Unload them with `sudo modprobe -r kvm_intel kvm`, or blacklist them if KVM is not used.
+- Do not throttle the VM disk through host cgroups: in testing, this corrupted Docker image layers.
+- Suspending or saving the VM during an import is safe; the import simply resumes, and takes that much longer.
+- Take a snapshot before a software `update` and delete it afterwards: on a 55 GB disk, a differencing image slows I/O down.
+
+**What `vasctl` does about it**
+
+- `doctor` checks disk size and read speed, free space for the next feed update, swap, recent OOM kills, NAT and clock synchronization.
+- `update-feed` refuses to start when free space is below what the update needs at its peak (`--force` overrides). It retries interrupted pulls, removes the previous feed images, and only one run can happen at a time.
+- `start` waits for slow feed copies instead of failing when Docker flags the data containers unhealthy on a slow disk.
+- If a full disk already broke an update, `repair-feed` drops the half-built SCAP data (about 25 GB) and the leftover images.
 
 ## Limitations
 
