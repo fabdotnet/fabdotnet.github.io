@@ -16,11 +16,11 @@ It drives the **official Greenbone container stack** and its unmodified `compose
 | | |
 |---|---|
 | **Repository** | [github.com/fabdotnet/VASController](https://github.com/fabdotnet/VASController) |
-| **Version** | 1.1.0 |
+| **Version** | 1.1.1 |
 | **License** | MIT |
 | **Language** | Bash (single file, runs as root) |
 | **Platforms** | Debian 12+, Ubuntu 22.04+ — amd64 |
-| **Recommended resources** | 4 vCPU, 8 GB RAM, 60 GB disk minimum |
+| **Recommended resources** | 4 vCPU, 8 GB RAM, 120 GB disk minimum |
 
 ## Motivation
 
